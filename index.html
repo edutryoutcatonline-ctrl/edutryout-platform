@@ -21,78 +21,67 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- Header / Navbar Utama dengan Logo Toga & Buku -->
+    <!-- Header / Navbar Utama -->
     <header class="bg-indigo-600 text-white shadow-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <!-- Menampilkan Logo Gambar logo.png -->
-                <img src="logo.png" alt="Logo EduTryout" class="w-10 h-10 rounded-xl object-cover bg-white shadow border border-indigo-400">
+                <img src="logo.png" alt="Logo EduTryout" class="w-10 h-10 rounded-xl object-cover bg-white shadow border border-indigo-400" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%234f4ee5\' stroke-width=\'2\'><path d=\'M22 10v6M2 10l10-5 10 5-10 5z\'/><path d=\'M6 12v5c3 3 9 3 12 0v-5\'/></svg>';">
                 <div>
                     <h1 class="font-bold text-lg leading-tight">EduTryout</h1>
-                    <p class="text-xs text-indigo-200">Platform Ujian CAT Online</p>
+                    <p class="text-xs text-indigo-200">Panel Kontrol</p>
                 </div>
             </div>
-            <div id="nav-user-info" class="text-sm font-medium">
-                <span id="user-status-label" class="bg-indigo-700 px-3 py-1 rounded-full text-xs">Sistem Online</span>
+            <div class="flex items-center space-x-2">
+                <button onclick="switchTab('ringkasan')" class="px-3 py-1.5 bg-indigo-700 hover:bg-indigo-800 text-white rounded-lg text-xs font-medium transition">Ringkasan</button>
+                <button onclick="switchTab('soal')" class="px-3 py-1.5 bg-indigo-700 hover:bg-indigo-800 text-white rounded-lg text-xs font-medium transition">Soal</button>
+                <button onclick="openAdminPanel()" class="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-medium transition">🛡️ Admin</button>
             </div>
         </div>
     </header>
 
     <!-- Konten Utama Aplikasi -->
-    <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
+    <main class="max-w-6xl mx-auto px-4 py-6 flex-grow w-full space-y-6">
         
-        <!-- Tampilan Beranda Utama -->
-        <div id="app-container" class="space-y-6">
+        <!-- HALAMAN / TAB UTAMA -->
+        <div id="main-content-area" class="space-y-6">
+            
+            <!-- Banner Sambutan dengan Logo -->
             <div class="bg-gradient-to-r from-indigo-500 to-blue-600 rounded-2xl p-6 md:p-8 text-white shadow-lg flex flex-col md:flex-row items-center gap-6">
                 <div class="flex-shrink-0">
-                    <img src="logo.png" alt="EduTryout Logo" class="w-24 h-24 md:w-32 md:h-32 rounded-2xl shadow-md border-2 border-white/30 object-cover bg-white">
+                    <img src="logo.png" alt="Logo" class="w-24 h-24 md:w-28 md:h-28 rounded-2xl shadow-md border-2 border-white/30 object-cover bg-white" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%234f4ee5\' stroke-width=\'2\'><path d=\'M22 10v6M2 10l10-5 10 5-10 5z\'/><path d=\'M6 12v5c3 3 9 3 12 0v-5\'/></svg>';">
                 </div>
                 <div>
-                    <h2 class="text-2xl md:text-3xl font-bold mb-2">Selamat Datang di EduTryout!</h2>
-                    <p class="text-indigo-100 text-sm md:text-base mb-6">Platform simulasi ujian CAT online dengan manajemen paket soal, sub-paket, dan sistem penilaian real-time.</p>
-                    
-                    <div class="flex flex-wrap gap-4">
-                        <button onclick="showLoginModal()" class="px-6 py-2.5 bg-white text-indigo-600 font-semibold rounded-xl shadow hover:bg-indigo-50 transition">
-                            Masuk / Daftar Peserta
-                        </button>
-                        <button onclick="openAdminPanel()" class="px-6 py-2.5 bg-indigo-700 text-white font-semibold rounded-xl shadow hover:bg-indigo-800 transition border border-indigo-400">
-                            Panel Admin
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2">EduTryout CAT Online</h2>
+                    <p class="text-indigo-100 text-sm md:text-base mb-4">Platform simulasi ujian profesional dengan manajemen paket soal, sub-paket, dan analitik peserta real-time.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="openAdminPanel()" class="px-5 py-2.5 bg-white text-indigo-600 font-semibold rounded-xl shadow hover:bg-indigo-50 transition">
+                            Buka Panel Admin
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-gray-800 text-lg mb-2">📚 Manajemen Soal & Sub-Paket</h3>
-                    <p class="text-sm text-gray-600">Kelola paket tryout, waktu akses, hingga upload soal format Word dengan mudah melalui panel admin.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-gray-800 text-lg mb-2">💾 Pusat Keamanan Data (Backup)</h3>
-                    <p class="text-sm text-gray-600">Dilengkapi fitur Unduh & Pulihkan Data JSON agar seluruh soal dan data peserta aman dari risiko cache terhapus.</p>
-                </div>
-            </div>
         </div>
 
-        <!-- PANEL ADMIN (Lengkap dengan Manajemen Soal & Tombol Backup/Restore) -->
+        <!-- PANEL ADMIN LENGKAP DENGAN MANAJEMEN SOAL & BACKUP -->
         <div id="admin-panel" class="hidden space-y-6">
             <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
                 <div class="flex items-center space-x-3">
-                    <img src="logo.png" alt="Logo" class="w-9 h-9 rounded-lg object-cover border">
+                    <img src="logo.png" alt="Logo" class="w-9 h-9 rounded-lg object-cover border" onerror="this.style.display='none'">
                     <div>
                         <h2 class="font-bold text-lg text-gray-800">EduTryout Admin</h2>
                         <p class="text-xs text-gray-500">Panel Kontrol & Manajemen Ujian</p>
                     </div>
                 </div>
                 <button onclick="closeAdminPanel()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium transition">
-                    Keluar ke Beranda
+                    Tutup Panel
                 </button>
             </div>
 
-            <!-- KOTAK FITUR BACKUP & RESTORE DATA (AMAN & PRAKTIS) -->
+            <!-- KOTAK FITUR BACKUP & RESTORE DATA (PENGAMAN SOAL) -->
             <div class="p-6 bg-white rounded-2xl shadow-sm border border-indigo-100 bg-gradient-to-br from-white to-indigo-50/30">
-                <h3 class="font-bold text-gray-800 text-base mb-1">Pusat Backup & Pemulihan Data Soal</h3>
-                <p class="text-sm text-gray-500 mb-4">Unduh file cadangan secara berkala setiap selesai memperbarui soal agar data peserta dan ujian tidak berubah kembali.</p>
+                <h3 class="font-bold text-gray-800 text-base mb-1">💾 Pusat Backup & Pemulihan Data Soal</h3>
+                <p class="text-sm text-gray-500 mb-4">Unduh file cadangan secara berkala agar paket soal dan data peserta Anda tidak hilang saat cache browser terbersihkan.</p>
                 
                 <div class="flex flex-wrap gap-3">
                     <!-- Tombol Download Backup (.json) -->
@@ -108,27 +97,44 @@
                 </div>
             </div>
 
-            <!-- Bagian Menu Manajemen Paket Soal -->
+            <!-- Manajemen Paket & Sub-Paket Soal (Sesuai Tampilan Anda Sebelumnya) -->
             <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
                 <div class="flex justify-between items-center">
                     <div>
                         <h3 class="font-bold text-gray-800 text-lg">Manajemen Paket & Sub-Paket Soal</h3>
-                        <p class="text-xs text-gray-500">Atur paket tryout, sub-paket, dan butir soal ujian.</p>
+                        <p class="text-xs text-gray-500">Atur paket tryout, waktu akses, dan sub-paket soal.</p>
                     </div>
-                    <button onclick="alert('Fitur Tambah Paket Baru Aktif')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-medium transition shadow-sm">
+                    <button onclick="alert('Fitur Tambah Paket Baru')" class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-medium transition shadow-sm">
                         + Tambah Paket Baru
                     </button>
                 </div>
 
-                <div class="p-4 border border-gray-200 rounded-xl bg-gray-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    <div>
-                        <span class="text-xs font-semibold text-indigo-600 bg-indigo-100 px-2.5 py-1 rounded-md">UTBK SNBT</span>
-                        <h4 class="font-bold text-gray-800 mt-1">Tryout Akbar UTBK-SNBT 2026 (TPS & Penalaran)</h4>
-                        <p class="text-xs text-gray-500 mt-0.5">1 Sub-Paket • 1 Soal • GRATIS</p>
+                <div class="p-4 border border-gray-200 rounded-xl bg-gray-50 space-y-3">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <span class="text-xs font-semibold text-indigo-600 bg-indigo-100 px-2.5 py-1 rounded-md">UTBK SNBT</span>
+                            <h4 class="font-bold text-gray-800 mt-1">Tryout Akbar UTBK-SNBT 2026 (TPS & Penalaran)</h4>
+                            <p class="text-xs text-gray-500 mt-0.5">1 Sub-Paket • 1 Soal • GRATIS</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="alert('Edit Paket')" class="px-3 py-1.5 bg-white border border-gray-300 text-gray-700 rounded-lg text-xs font-medium hover:bg-gray-100">Edit</button>
+                            <button onclick="alert('Hapus Paket')" class="px-3 py-1.5 bg-red-50 border border-red-200 text-red-600 rounded-lg text-xs font-medium hover:bg-red-100">Hapus</button>
+                        </div>
                     </div>
-                    <div class="flex gap-2">
-                        <button onclick="alert('Edit Paket Aktif')" class="px-3 py-1.5 bg-white border border-gray-300 text-gray-700 rounded-lg text-xs font-medium hover:bg-gray-100">Edit</button>
-                        <button onclick="alert('Hapus Paket')" class="px-3 py-1.5 bg-red-50 border border-red-200 text-red-600 rounded-lg text-xs font-medium hover:bg-red-100">Hapus</button>
+
+                    <!-- Sub-Paket Box -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-200 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-sm text-gray-700">Sub-Paket 1: Tes Potensi Skolastik (TPS) (1)</span>
+                            <button onclick="alert('Edit Sub-Paket')" class="text-indigo-600 text-xs font-medium hover:underline">Ubah</button>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg border border-dashed border-gray-300 flex flex-col md:flex-row justify-between items-center gap-3">
+                            <span class="text-xs text-gray-600">1 Butir Soal Terdaftar</span>
+                            <div class="flex gap-2 w-full md:w-auto">
+                                <button onclick="alert('Upload Word .docx')" class="flex-1 md:flex-none px-3 py-2 bg-indigo-600 text-white text-xs rounded-lg font-medium hover:bg-indigo-700">📄 Upload Word (.docx)</button>
+                                <button onclick="alert('Tambah Soal Manual')" class="flex-1 md:flex-none px-3 py-2 bg-gray-800 text-white text-xs rounded-lg font-medium hover:bg-gray-900">+ Soal Manual</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -141,20 +147,21 @@
         <p>&copy; 2026 EduTryout Platform Ujian CAT Online. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript Sistem & Backup/Restore -->
+    <!-- JavaScript Navigasi & Fitur Backup/Restore -->
     <script>
         function openAdminPanel() {
-            document.getElementById('app-container').classList.add('hidden');
             document.getElementById('admin-panel').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function closeAdminPanel() {
             document.getElementById('admin-panel').classList.add('hidden');
-            document.getElementById('app-container').classList.remove('hidden');
         }
 
-        function showLoginModal() {
-            alert('Fitur Login / Pendaftaran Peserta Aktif.');
+        function switchTab(tabName) {
+            if(tabName === 'ringkasan' || tabName === 'soal') {
+                document.getElementById('admin-panel').classList.add('hidden');
+            }
         }
 
         // ==========================================
@@ -207,4 +214,4 @@
         }
     </script>
 </body>
-</html>
+        </html>
