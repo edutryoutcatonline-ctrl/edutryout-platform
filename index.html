@@ -21,20 +21,19 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- Header / Navbar Utama -->
+    <!-- Header / Navbar Utama dengan Logo Toga & Buku -->
     <header class="bg-indigo-600 text-white shadow-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="bg-white p-2 rounded-xl text-indigo-600 font-bold shadow">
-                    🎓
-                </div>
+                <!-- Menampilkan Logo Gambar logo.png -->
+                <img src="logo.png" alt="Logo EduTryout" class="w-10 h-10 rounded-xl object-cover bg-white shadow border border-indigo-400">
                 <div>
                     <h1 class="font-bold text-lg leading-tight">EduTryout</h1>
                     <p class="text-xs text-indigo-200">Platform Ujian CAT Online</p>
                 </div>
             </div>
             <div id="nav-user-info" class="text-sm font-medium">
-                <!-- Status User / Admin -->
+                <span id="user-status-label" class="bg-indigo-700 px-3 py-1 rounded-full text-xs">Sistem Online</span>
             </div>
         </div>
     </header>
@@ -42,54 +41,58 @@
     <!-- Konten Utama Aplikasi -->
     <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
         
-        <!-- Tampilan Selamat Datang & Menu Utama -->
+        <!-- Tampilan Beranda Utama -->
         <div id="app-container" class="space-y-6">
-            <div class="bg-gradient-to-r from-indigo-500 to-blue-600 rounded-2xl p-6 md:p-8 text-white shadow-lg">
-                <h2 class="text-2xl md:text-3xl font-bold mb-2">Selamat Datang di EduTryout!</h2>
-                <p class="text-indigo-100 text-sm md:text-base mb-6">Persiapkan diri menghadapi ujian CAT impian Anda dengan latihan soal akurat, sistem penilaian real-time, dan manajemen lengkap.</p>
-                
-                <div class="flex flex-wrap gap-4">
-                    <button onclick="showLoginModal()" class="px-6 py-2.5 bg-white text-indigo-600 font-semibold rounded-xl shadow hover:bg-indigo-50 transition">
-                        Masuk / Daftar
-                    </button>
-                    <button onclick="openAdminPanel()" class="px-6 py-2.5 bg-indigo-700 text-white font-semibold rounded-xl shadow hover:bg-indigo-800 transition border border-indigo-400">
-                        Panel Admin
-                    </button>
+            <div class="bg-gradient-to-r from-indigo-500 to-blue-600 rounded-2xl p-6 md:p-8 text-white shadow-lg flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-shrink-0">
+                    <img src="logo.png" alt="EduTryout Logo" class="w-24 h-24 md:w-32 md:h-32 rounded-2xl shadow-md border-2 border-white/30 object-cover bg-white">
+                </div>
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2">Selamat Datang di EduTryout!</h2>
+                    <p class="text-indigo-100 text-sm md:text-base mb-6">Platform simulasi ujian CAT online dengan manajemen paket soal, sub-paket, dan sistem penilaian real-time.</p>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="showLoginModal()" class="px-6 py-2.5 bg-white text-indigo-600 font-semibold rounded-xl shadow hover:bg-indigo-50 transition">
+                            Masuk / Daftar Peserta
+                        </button>
+                        <button onclick="openAdminPanel()" class="px-6 py-2.5 bg-indigo-700 text-white font-semibold rounded-xl shadow hover:bg-indigo-800 transition border border-indigo-400">
+                            Panel Admin
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Bagian Informasi & Fitur Backup Tambahan -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-gray-800 text-lg mb-2">🚀 Siap Ujian CAT</h3>
-                    <p class="text-sm text-gray-600">Kerjakan tryout dengan simulasi sistem CAT asli, lengkap dengan waktu hitung mundur dan pembahasan soal otomatis.</p>
+                    <h3 class="font-bold text-gray-800 text-lg mb-2">📚 Manajemen Soal & Sub-Paket</h3>
+                    <p class="text-sm text-gray-600">Kelola paket tryout, waktu akses, hingga upload soal format Word dengan mudah melalui panel admin.</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-gray-800 text-lg mb-2">💾 Keamanan Data Soal</h3>
-                    <p class="text-sm text-gray-600">Gunakan fitur Backup & Restore di Panel Admin untuk mengamankan data soal dan peserta agar tidak mudah hilang.</p>
+                    <h3 class="font-bold text-gray-800 text-lg mb-2">💾 Pusat Keamanan Data (Backup)</h3>
+                    <p class="text-sm text-gray-600">Dilengkapi fitur Unduh & Pulihkan Data JSON agar seluruh soal dan data peserta aman dari risiko cache terhapus.</p>
                 </div>
             </div>
         </div>
 
-        <!-- PANEL ADMIN (Fitur Ekspor/Impor Ditambahkan di Sini) -->
+        <!-- PANEL ADMIN (Lengkap dengan Manajemen Soal & Tombol Backup/Restore) -->
         <div id="admin-panel" class="hidden space-y-6">
             <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
                 <div class="flex items-center space-x-3">
-                    <div class="bg-indigo-100 text-indigo-600 p-2.5 rounded-xl font-bold">🛡️</div>
+                    <img src="logo.png" alt="Logo" class="w-9 h-9 rounded-lg object-cover border">
                     <div>
                         <h2 class="font-bold text-lg text-gray-800">EduTryout Admin</h2>
-                        <p class="text-xs text-gray-500">Panel Kontrol & Manajemen Soal</p>
+                        <p class="text-xs text-gray-500">Panel Kontrol & Manajemen Ujian</p>
                     </div>
                 </div>
                 <button onclick="closeAdminPanel()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium transition">
-                    Kembali ke Beranda
+                    Keluar ke Beranda
                 </button>
             </div>
 
-            <!-- KOTAK FITUR BACKUP & RESTORE DATA (BARU) -->
-            <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
-                <h3 class="font-bold text-gray-800 text-base mb-1">Pusat Backup & Pemulihan Data</h3>
-                <p class="text-sm text-gray-500 mb-4">Unduh file cadangan secara berkala agar paket soal dan data peserta Anda tidak hilang saat cache browser terhapus.</p>
+            <!-- KOTAK FITUR BACKUP & RESTORE DATA (AMAN & PRAKTIS) -->
+            <div class="p-6 bg-white rounded-2xl shadow-sm border border-indigo-100 bg-gradient-to-br from-white to-indigo-50/30">
+                <h3 class="font-bold text-gray-800 text-base mb-1">Pusat Backup & Pemulihan Data Soal</h3>
+                <p class="text-sm text-gray-500 mb-4">Unduh file cadangan secara berkala setiap selesai memperbarui soal agar data peserta dan ujian tidak berubah kembali.</p>
                 
                 <div class="flex flex-wrap gap-3">
                     <!-- Tombol Download Backup (.json) -->
@@ -105,11 +108,29 @@
                 </div>
             </div>
 
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center py-12">
-                <p class="text-gray-500 mb-4">Panel manajemen paket soal, sub-paket, dan analitik Anda aktif di sini.</p>
-                <button onclick="alert('Fitur Manajemen Soal Utama Aktif')" class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-medium shadow hover:bg-indigo-700 transition">
-                    + Kelola Paket Soal
-                </button>
+            <!-- Bagian Menu Manajemen Paket Soal -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-gray-800 text-lg">Manajemen Paket & Sub-Paket Soal</h3>
+                        <p class="text-xs text-gray-500">Atur paket tryout, sub-paket, dan butir soal ujian.</p>
+                    </div>
+                    <button onclick="alert('Fitur Tambah Paket Baru Aktif')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-medium transition shadow-sm">
+                        + Tambah Paket Baru
+                    </button>
+                </div>
+
+                <div class="p-4 border border-gray-200 rounded-xl bg-gray-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="text-xs font-semibold text-indigo-600 bg-indigo-100 px-2.5 py-1 rounded-md">UTBK SNBT</span>
+                        <h4 class="font-bold text-gray-800 mt-1">Tryout Akbar UTBK-SNBT 2026 (TPS & Penalaran)</h4>
+                        <p class="text-xs text-gray-500 mt-0.5">1 Sub-Paket • 1 Soal • GRATIS</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="alert('Edit Paket Aktif')" class="px-3 py-1.5 bg-white border border-gray-300 text-gray-700 rounded-lg text-xs font-medium hover:bg-gray-100">Edit</button>
+                        <button onclick="alert('Hapus Paket')" class="px-3 py-1.5 bg-red-50 border border-red-200 text-red-600 rounded-lg text-xs font-medium hover:bg-red-100">Hapus</button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -120,9 +141,8 @@
         <p>&copy; 2026 EduTryout Platform Ujian CAT Online. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript Logika & Fitur Backup/Restore -->
+    <!-- JavaScript Sistem & Backup/Restore -->
     <script>
-        // Fungsi Simulasi Panel Admin
         function openAdminPanel() {
             document.getElementById('app-container').classList.add('hidden');
             document.getElementById('admin-panel').classList.remove('hidden');
@@ -134,14 +154,13 @@
         }
 
         function showLoginModal() {
-            alert('Silakan gunakan akun peserta atau login EmailJS Anda.');
+            alert('Fitur Login / Pendaftaran Peserta Aktif.');
         }
 
         // ==========================================
         // FITUR UTAMA: BACKUP & RESTORE DATA (JSON)
         // ==========================================
 
-        // 1. Fungsi untuk Mengunduh Seluruh Data (Backup)
         function exportDataApp() {
             const allData = {};
             for (let i = 0; i < localStorage.length; i++) {
@@ -149,16 +168,14 @@
                 allData[key] = localStorage.getItem(key);
             }
 
-            // Jika localStorage kosong, buat objek cadangan kosong agar tetap bisa diunduh
             if (Object.keys(allData).length === 0) {
-                allData["info"] = "EduTryout Default Backup State";
+                allData["info"] = "EduTryout Initial State";
             }
 
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allData, null, 2));
             const downloadAnchor = document.createElement('a');
             downloadAnchor.setAttribute("href", dataStr);
             
-            // Format penamaan file otomatis berdasarkan tanggal hari ini
             const dateStr = new Date().toISOString().split('T')[0];
             downloadAnchor.setAttribute("download", `edutryout_backup_${dateStr}.json`);
             
@@ -167,7 +184,6 @@
             downloadAnchor.remove();
         }
 
-        // 2. Fungsi untuk Memulihkan Data (Restore)
         function importDataApp(event) {
             const fileReader = new FileReader();
             if (event.target.files[0]) {
@@ -176,7 +192,6 @@
                     try {
                         const importedData = JSON.parse(e.target.result);
                         
-                        // Masukkan kembali data ke dalam localStorage browser
                         Object.keys(importedData).forEach(key => {
                             localStorage.setItem(key, importedData[key]);
                         });
